@@ -4,7 +4,7 @@ import Icon from "components/Icon";
 
 export default function TheFooter() {
   return (
-    <footer className="absolute bottom-0 w-full h-16 flex items-center justify-between px-5 text-sm border-t border-gray-800">
+    <footer className="w-full h-16 flex items-center justify-between px-5 text-sm border-t border-gray-800">
       <div className="text-gray-600">
         Created at <Icon name="home" /> with <Icon name="heart" /> and{" "}
         <Icon name="coffee" />

@@ -6,7 +6,7 @@ import TheFooter from "features/app/organisms/TheFooter";
 export default function App() {
   return (
     <>
-      <main className="px-5 pt-5 pb-16">
+      <main className="p-5 flex-1">
         <TheHeader />
       </main>
 
