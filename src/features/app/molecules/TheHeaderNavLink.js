@@ -13,11 +13,11 @@ export default function NavLink({ className, children, icon, ...props }) {
     <Link
       {...props}
       className={classnames(
-        "flex items-center px-5 transition duration-150 hover:bg-orange-400 active:bg-orange-600 border-b-2",
+        "flex items-center px-5 transition duration-150 hover:bg-gray-700 active:bg-gray-900 border-b-4",
         className,
         !selected &&
-          "text-orange-200 hover:text-orange-100 active:text-orange-300 border-transparent",
-        selected && "text-white border-white"
+          "text-gray-400 hover:text-gray-300 active:text-gray-500 border-transparent",
+        selected && "text-white border-orange-500"
       )}
     >
       <Icon name={icon} className="text-sm mr-3" /> {children}
