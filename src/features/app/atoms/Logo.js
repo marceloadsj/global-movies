@@ -1,6 +1,6 @@
 import React from "react";
 
-import Icon from "components/atoms/Icon";
+import Icon from "components/Icon";
 
 export default function Logo() {
   return (

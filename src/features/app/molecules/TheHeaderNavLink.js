@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import classnames from "classnames";
 
-import Icon from "components/atoms/Icon";
+import Icon from "components/Icon";
 
 export default function NavLink({ className, children, icon, ...props }) {
   const { pathname } = useLocation();
