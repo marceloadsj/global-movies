@@ -9,7 +9,7 @@ export default function HomePage() {
     <>
       <FeaturedMovie />
 
-      <section className="p-5 md:p-10 flex flex-col lg:flex-row">
+      <section className="px-5 lg:px-10 flex flex-col lg:flex-row">
         <GenresNav />
 
         <TrendingMovies />

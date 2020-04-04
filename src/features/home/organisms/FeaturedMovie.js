@@ -62,8 +62,8 @@ export default function FeaturedMovie() {
         className="absolute top-0 opacity-25 mask-image-top-sm-bottom-lg mt-10"
       />
 
-      <div className="z-10 relative px-5 xl:px-20 pt-5 md:pt-12 lg:pt-20 pb-12">
-        <div className="flex flex-col sm:flex-row  items-end sm:items-center sm:h-5">
+      <div className="z-10 relative px-5 xl:px-16 pt-5 md:pt-10 pb-10">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center sm:h-5">
           <div className="flex items-center -mx-1">
             {movie.genres.map((genre) => {
               return (
@@ -80,7 +80,7 @@ export default function FeaturedMovie() {
 
           <Divider vertical variant="light" className="hidden sm:block mx-5" />
 
-          <div className="text-gray-400 flex items-center mt-2 sm:mt-0">
+          <div className="text-gray-400 flex items-center mt-2 sm:mt-0 text-xs sm:text-base">
             <Icon name="clock" className="mr-2" /> {movie.runtime} minutes
           </div>
         </div>
@@ -99,11 +99,8 @@ export default function FeaturedMovie() {
           <Link to={movieUrl}>{movie.tagline}</Link>
         </h2>
 
-        <div className="xl:max-w-4xl mt-12">
-          <Card
-            className="mt-10"
-            bodyClassName="h-32 md:h-48 xl:h-auto pb-5 xl:pb-0 overflow-y-scroll mask-image-bottom-sm xl:mask-image-none"
-          >
+        <div className="xl:max-w-4xl mt-5 sm:mt-10">
+          <Card bodyClassName="h-32 md:h-48 xl:h-auto pb-5 xl:pb-0 overflow-y-scroll mask-image-bottom-sm xl:mask-image-none">
             <h5 className="text-white text-lg flex items-center">
               <Icon name="align-left" className="mr-2" />
               Overview
@@ -135,7 +132,12 @@ export default function FeaturedMovie() {
           </div>
         </div>
 
-        <Button icon="info" isLink to={movieUrl} className="mt-5">
+        <Button
+          icon="info"
+          isLink
+          to={movieUrl}
+          className="mt-5 w-full sm:w-auto"
+        >
           Check More Details
         </Button>
       </div>
