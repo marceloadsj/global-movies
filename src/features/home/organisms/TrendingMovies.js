@@ -51,12 +51,12 @@ export default function TrendingMovies() {
   if (movies.state === "loading" || movies.state === "error") return null;
 
   return (
-    <div className="lg:ml-5 mt-10 lg:mt-16 pb-10 flex-1">
+    <div className="lg:ml-5 mt-5 md:mt-10 lg:mt-16 pb-10 flex-1">
       <h3 className="flex items-center text-xl text-white">
         <Icon name="trending-up" className="mr-3" /> Trending Movies
       </h3>
 
-      <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-5">
+      <div className="mt-5 lg:mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-5">
         {sliceMovies.map((movie) => {
           return <TrendingMoviesPoster key={movie.id} movie={movie} />;
         })}
@@ -65,7 +65,7 @@ export default function TrendingMovies() {
       {page < movies.total_pages && (
         <div className="text-center">
           <Button
-            className="mt-10"
+            className="mt-10 w-full sm:w-auto"
             icon="plus-circle"
             onClick={() => setPage((page) => page + 1)}
           >
