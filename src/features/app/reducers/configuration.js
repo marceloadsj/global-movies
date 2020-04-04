@@ -11,6 +11,6 @@ const actions = [
   }
 ];
 
-const initialState = { loading: true };
+const initialState = null;
 
 export default createReducer(actions, initialState);
