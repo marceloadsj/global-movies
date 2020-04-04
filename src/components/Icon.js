@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classnames from "classnames";
+import feather from "feather-icons";
 
 export default function Icon({ name, className }) {
+  useEffect(() => {
+    feather.replace();
+  }, [name, className]);
+
   return (
-    <svg
+    <i
+      data-feather={name}
       width="1em"
       height="1em"
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
       className={classnames("inline stroke-current stroke-2", className)}
-    >
-      <use xlinkHref={`/feather-sprite.svg#${name}`} />
-    </svg>
+    />
   );
 }
