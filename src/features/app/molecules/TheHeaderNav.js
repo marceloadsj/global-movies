@@ -9,11 +9,11 @@ export default function TheHeaderNav() {
         Home
       </TheHeaderNavLink>
 
-      <TheHeaderNavLink to="/genres" className="ml-5" icon="grid">
+      <TheHeaderNavLink to="/genres" icon="grid">
         Genres
       </TheHeaderNavLink>
 
-      <TheHeaderNavLink to="/search" className="ml-5" icon="search">
+      <TheHeaderNavLink to="/search" icon="search">
         Search
       </TheHeaderNavLink>
     </nav>
