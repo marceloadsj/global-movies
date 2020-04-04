@@ -16,7 +16,7 @@ export default function TheFooter() {
         rel="noopener noreferrer"
         className="text-gray-500"
       >
-        Marcelo Silva - Github
+        Marcelo Silva<span className="hidden sm:inline"> - Github</span>
       </a>
     </footer>
   );
