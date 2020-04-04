@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/global-movies/static/css/main.c510e220.chunk.css",
+    "main.css": "/global-movies/static/css/main.d90ad3a2.chunk.css",
     "main.js": "/global-movies/static/js/main.fdd6cc86.chunk.js",
     "main.js.map": "/global-movies/static/js/main.fdd6cc86.chunk.js.map",
     "runtime-main.js": "/global-movies/static/js/runtime-main.8c4f0693.js",
@@ -8,16 +8,16 @@
     "static/js/2.b0cfe55d.chunk.js": "/global-movies/static/js/2.b0cfe55d.chunk.js",
     "static/js/2.b0cfe55d.chunk.js.map": "/global-movies/static/js/2.b0cfe55d.chunk.js.map",
     "index.html": "/global-movies/index.html",
-    "precache-manifest.202c0f8967970680b796bbc59e174a24.js": "/global-movies/precache-manifest.202c0f8967970680b796bbc59e174a24.js",
+    "precache-manifest.29af6d79d09d091820ec7ccf01587360.js": "/global-movies/precache-manifest.29af6d79d09d091820ec7ccf01587360.js",
     "service-worker.js": "/global-movies/service-worker.js",
-    "static/css/main.c510e220.chunk.css.map": "/global-movies/static/css/main.c510e220.chunk.css.map",
+    "static/css/main.d90ad3a2.chunk.css.map": "/global-movies/static/css/main.d90ad3a2.chunk.css.map",
     "static/js/2.b0cfe55d.chunk.js.LICENSE.txt": "/global-movies/static/js/2.b0cfe55d.chunk.js.LICENSE.txt",
     "static/media/tmdb-logo.56fd61ee.svg": "/global-movies/static/media/tmdb-logo.56fd61ee.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.8c4f0693.js",
     "static/js/2.b0cfe55d.chunk.js",
-    "static/css/main.c510e220.chunk.css",
+    "static/css/main.d90ad3a2.chunk.css",
     "static/js/main.fdd6cc86.chunk.js"
   ]
 }
