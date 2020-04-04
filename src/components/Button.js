@@ -19,7 +19,7 @@ export default function Button({
       className={classnames(
         `
           bg-orange-600 hover:bg-orange-500 active:bg-orange-700
-          inline-flex text-white items-center justify-center px-8 py-2
+          text-white inline-flex items-center justify-center px-8 py-2
           rounded cursor-pointer focus:outline-none focus:shadow-outline
         `,
         className

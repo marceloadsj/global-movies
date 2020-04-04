@@ -8,11 +8,13 @@ export default function Icon({ name, className }) {
   }, [name, className]);
 
   return (
-    <i
-      data-feather={name}
-      width="1em"
-      height="1em"
-      className={classnames("inline stroke-current stroke-2", className)}
-    />
+    <span className="inline-flex items-center">
+      <i
+        data-feather={name}
+        width="1em"
+        height="1em"
+        className={classnames("inline stroke-current stroke-2", className)}
+      />
+    </span>
   );
 }

@@ -65,7 +65,9 @@ export default function GenresNav() {
   return (
     <div className="py-10 pr-5 sticky top-0 max-h-screen overflow-y-scroll w-64 xl:w-full xl:max-w-xs">
       <Card>
-        <h5 className="text-gray-300 text-xl mb-5">Genres</h5>
+        <h5 className="text-gray-300 text-xl mb-5 flex items-center">
+          <Icon name="grid" className="mr-3" /> Genres
+        </h5>
 
         {genres.data.map((genre) => (
           <GenresNavLink key={genre.id} genre={genre} />

@@ -17,7 +17,7 @@ export default function TrendingMoviesPoster({ movie }) {
 
   // parse release date to show
   const releaseDate = useMemo(() => {
-    return dayjs(movie.release_date).format("MM/YY");
+    return dayjs(movie.release_date).format("MMM YYYY");
   }, [movie.release_date]);
 
   return (
