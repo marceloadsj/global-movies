@@ -24,11 +24,15 @@ export default function App() {
   return (
     <>
       <main className="flex-1 flex flex-col">
-        {(!configuration || configuration?.loading) && <AppLoader />}
+        {(!configuration || configuration?.state === "loading") && (
+          <AppLoader />
+        )}
 
-        {configuration?.error && <AppError>{configuration.message}</AppError>}
+        {configuration?.state === "error" && (
+          <AppError>{configuration.message}</AppError>
+        )}
 
-        {configuration?.success && (
+        {configuration?.state === "success" && (
           <>
             <TheHeader />
 
