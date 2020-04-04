@@ -4,14 +4,14 @@ import classnames from "classnames";
 
 import Icon from "components/Icon";
 
-export default function NavLink({ className, children, icon, ...props }) {
+export default function TheHeaderNavLink({ to, className, children, icon }) {
   const { pathname } = useLocation();
 
-  const selected = pathname === props.to;
+  const selected = pathname === to;
 
   return (
     <Link
-      {...props}
+      to={to}
       className={classnames(
         "flex items-center px-5 transition duration-150 hover:bg-gray-700 active:bg-gray-900 border-b-4",
         className,

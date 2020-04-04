@@ -1,6 +1,6 @@
 import React from "react";
 
-import TheHeaderNavLink from "./TheHeaderNavLink";
+import TheHeaderNavLink from "../atoms/TheHeaderNavLink";
 
 export default function TheHeaderNav() {
   return (
