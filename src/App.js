@@ -57,7 +57,7 @@ export default function App() {
                 <SelectedMoviePage />
               </Route>
 
-              <Route path="/search" exact>
+              <Route path="/search/:query?" exact>
                 <SearchPage />
               </Route>
             </Switch>
