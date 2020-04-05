@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useRouteMatch, useHistory } from "react-router-dom";
 
 import Icon from "components/Icon";
 import Divider from "components/Divider";
@@ -6,13 +7,17 @@ import Card from "components/Card";
 import MoviesList from "features/movies/organisms/MoviesList";
 
 export default function SearchPage() {
-  const [fetchUrl, setFetchUrl] = useState();
+  const {
+    params: { query },
+  } = useRouteMatch();
 
-  const [search, setSearch] = useState("");
+  // put the search query on url, with a debounce
+  const [search, setSearch] = useState(query || "");
+  const history = useHistory();
 
   useEffect(() => {
     async function run() {
-      setFetchUrl(`/3/search/movie?include_adult=false&query=${search}`);
+      history.push(`/search/${search}`);
     }
 
     if (search) {
@@ -21,8 +26,15 @@ export default function SearchPage() {
       return () => clearTimeout(timeout);
     }
 
-    setFetchUrl();
-  }, [search]);
+    history.push("/search");
+  }, [history, search]);
+
+  // mount the proper fetchUrl
+  let fetchUrl;
+
+  if (query) {
+    fetchUrl = `/3/search/movie?include_adult=false&query=${query}`;
+  }
 
   return (
     <section className="p-5 lg:p-10">

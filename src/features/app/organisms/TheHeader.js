@@ -21,7 +21,13 @@ export default function TheHeader() {
           <>
             <Divider vertical className="mx-5 lg:mx-10" />
 
-            <TmdbLogo className="w-32" />
+            <a
+              href={process.env.REACT_APP_THE_MOVIE_DB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <TmdbLogo className="w-32" />
+            </a>
           </>
         )}
       </div>

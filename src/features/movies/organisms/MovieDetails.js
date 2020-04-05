@@ -45,7 +45,9 @@ export default function MovieDetails({ movieId, isFeatured }) {
   const { base_url, backdrop_sizes } = configuration.images;
   const originalBackdropSize = backdrop_sizes[backdrop_sizes.length - 1];
 
-  const movieBackdrop = `${base_url}${originalBackdropSize}${movie.backdrop_path}`;
+  const movieBackdrop =
+    movie.backdrop_path &&
+    `${base_url}${originalBackdropSize}${movie.backdrop_path}`;
 
   // mount movie url link
   const movieUrl = `/movie/${movie.id}`;
@@ -150,11 +152,13 @@ export default function MovieDetails({ movieId, isFeatured }) {
 
   return (
     <>
-      <img
-        src={movieBackdrop}
-        alt=""
-        className="absolute top-0 opacity-25 mask-image-top-sm-bottom-lg mt-10 w-full"
-      />
+      {movieBackdrop && (
+        <img
+          src={movieBackdrop}
+          alt=""
+          className="absolute top-0 opacity-25 mask-image-top-sm-bottom-lg mt-10 w-full"
+        />
+      )}
 
       <div className="z-10 relative px-5 xl:px-16 pt-5 lg:pt-10 pb-10">
         {isFeatured && content}
