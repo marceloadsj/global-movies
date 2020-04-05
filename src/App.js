@@ -9,6 +9,7 @@ import TheHeader from "features/app/organisms/TheHeader";
 import TheFooter from "features/app/organisms/TheFooter";
 import HomePage from "features/home/pages/HomePage";
 import GenresPage from "features/genres/pages/GenresPage";
+import SelectedGenrePage from "features/genres/pages/SelectedGenrePage";
 
 export default function App() {
   // dispatch to get the configurations object, as it's needed all over the system
@@ -44,6 +45,10 @@ export default function App() {
 
               <Route path="/genres" exact>
                 <GenresPage />
+              </Route>
+
+              <Route path="/genre/:genreId" exact>
+                <SelectedGenrePage />
               </Route>
             </Switch>
           </>
