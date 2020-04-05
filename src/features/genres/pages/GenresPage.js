@@ -32,7 +32,7 @@ export default function GenresPage() {
             Feel free to choose one categorie to see all movies we have on our
             database, powered by{" "}
             <a
-              href="https://www.themoviedb.org/"
+              href={process.env.REACT_APP_THE_MOVIE_DB_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-orange-500"
