@@ -16,7 +16,7 @@ export default function GenresPage() {
   }
 
   return (
-    <section className="flex flex-col md:flex-row px-5 lg:px-10 pt-10">
+    <section className="flex flex-col md:flex-row px-5 lg:px-10 pt-5 lg:pt-10">
       <div className="md:w-1/3">
         <h1 className="text-white text-2xl flex items-center">
           <Icon name="grid" className="mr-3" /> Genres
@@ -52,7 +52,7 @@ export default function GenresPage() {
         <Divider vertical className="mx-5 lg:mx-10" />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 md:w-2/3 sm:my-10">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 md:w-2/3 mt-10 mb-5 sm:mb-10">
         {genres.data.map((genre) => {
           return (
             <Button
