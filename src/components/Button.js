@@ -9,6 +9,7 @@ export default function Button({
   isLink,
   icon,
   children,
+  variant = "primary",
   ...props
 }) {
   const Is = isLink ? Link : "button";
@@ -18,14 +19,19 @@ export default function Button({
       {...props}
       className={classnames(
         `
-          bg-orange-600 hover:bg-orange-500 active:bg-orange-700
-          text-white inline-flex items-center justify-center px-8 py-2
+          text-center text-white inline-flex items-center justify-center px-8 py-2
           rounded cursor-pointer focus:outline-none focus:shadow-outline
         `,
-        className
+        className,
+
+        variant === "primary" &&
+          "bg-orange-600 hover:bg-orange-500 active:bg-orange-700",
+
+        variant === "neutral" &&
+          "bg-gray-700 hover:bg-gray-600 active:bg-gray-800"
       )}
     >
-      <Icon name={icon} className="mr-2" /> {children}
+      {icon && <Icon name={icon} className="mr-2" />} {children}
     </Is>
   );
 }
