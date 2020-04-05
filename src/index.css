@@ -44,6 +44,6 @@
   }
 }
 
-.max-h-screen-100px {
-  max-height: calc(100vh - 100px);
+.max-h-screen-96px {
+  max-height: calc(100vh - 96px);
 }

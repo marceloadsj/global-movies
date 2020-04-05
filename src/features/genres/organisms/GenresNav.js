@@ -1,33 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import fetchDb from "utilities/fetchDb";
 import Card from "components/Card";
+import Icon from "components/Icon";
 import useBreakpoints from "hooks/useBreakpoints";
 import GenresNavLink from "../molecules/GenresNavLink";
-import { useHistory } from "react-router-dom";
-
-import Icon from "components/Icon";
+import getGenres from "../actions/getGenres";
 
 export default function GenresNav() {
   // load all genres to create the left nav bar
-  const [genres, setGenres] = useState({ state: "loading" });
+  const genres = useSelector((state) => state.genres);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setGenres({ state: "loading" });
-
-    async function run() {
-      try {
-        const response = await fetchDb.get("/3/genre/movie/list");
-
-        setGenres({ state: "success", data: response.data.genres });
-      } catch (exception) {
-        // TODO: I should send the error to an error tracker tool
-        setGenres({ state: "error" });
-      }
-    }
-
-    run();
-  }, []);
+    if (!genres) dispatch(getGenres());
+  }, [dispatch, genres]);
 
   // we render a select tag on mobile
   const { lg } = useBreakpoints();
@@ -35,7 +24,9 @@ export default function GenresNav() {
   const history = useHistory();
 
   // we doesn't show the bar if don't have the genres
-  if (genres.state === "loading" || genres.state === "error") return null;
+  if (!genres || genres?.state === "loading" || genres?.state === "error") {
+    return null;
+  }
 
   if (!lg) {
     return (
@@ -63,7 +54,7 @@ export default function GenresNav() {
   }
 
   return (
-    <div className="py-10 pr-5 sticky top-0 max-h-screen-100px overflow-y-scroll w-64 xl:w-full xl:max-w-xs">
+    <div className="-mb-32 -mt-10 py-10 pr-5 sticky top-0 max-h-screen-96px overflow-y-scroll w-64 xl:w-full xl:max-w-xs">
       <Card>
         <h5 className="text-gray-300 text-xl mb-5 flex items-center">
           <Icon name="grid" className="mr-3" /> Genres
