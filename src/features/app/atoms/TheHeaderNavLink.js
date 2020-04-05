@@ -7,7 +7,11 @@ import Icon from "components/Icon";
 export default function TheHeaderNavLink({ to, children, icon }) {
   const { pathname } = useLocation();
 
-  const selected = pathname === to;
+  let selected = pathname === to;
+
+  if (to === "/") {
+    selected = pathname.startsWith(to);
+  }
 
   return (
     <Link
