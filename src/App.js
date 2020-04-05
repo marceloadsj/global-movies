@@ -11,6 +11,7 @@ import HomePage from "features/home/pages/HomePage";
 import GenresPage from "features/genres/pages/GenresPage";
 import SelectedGenrePage from "features/genres/pages/SelectedGenrePage";
 import SelectedMoviePage from "features/movies/pages/SelectedMoviePage";
+import SearchPage from "features/search/pages/SearchPage";
 
 export default function App() {
   // dispatch to get the configurations object, as it's needed all over the system
@@ -54,6 +55,10 @@ export default function App() {
 
               <Route path="/movie/:movieId" exact>
                 <SelectedMoviePage />
+              </Route>
+
+              <Route path="/search" exact>
+                <SearchPage />
               </Route>
             </Switch>
           </>

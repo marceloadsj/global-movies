@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from "react";
 
 import fetchDb from "utilities/fetchDb";
 import Icon from "components/Icon";
+import Card from "components/Card";
 import Button from "components/Button";
 import useBreakpoints from "hooks/useBreakpoints";
 import MoviePoster from "../molecules/MoviePoster";
@@ -60,17 +61,32 @@ export default function MoviesList({ fetchUrl, title, icon }) {
 
   if (movies.state === "loading" || movies.state === "error") return null;
 
+  const hasMovies = Boolean(sliceMovies?.length);
+
   return (
     <div className="lg:ml-5 mt-5 flex-1">
       <h3 className="flex items-center text-xl text-white">
         {icon && <Icon name={icon} className="mr-3" />} {title}
       </h3>
 
-      <div className="mt-5 lg:mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-5">
-        {sliceMovies.map((movie) => {
-          return <MoviePoster key={movie.id} movie={movie} />;
-        })}
-      </div>
+      {!hasMovies && (
+        <Card
+          className="text-gray-500 text-center mt-5"
+          bodyClassName="flex flex-col items-center justify-center"
+        >
+          <Icon name="slash" className="text-4xl" />
+
+          <div className="mt-5 text-lg">No movies found</div>
+        </Card>
+      )}
+
+      {hasMovies && (
+        <div className="mt-5 lg:mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-5">
+          {sliceMovies.map((movie) => {
+            return <MoviePoster key={movie.id} movie={movie} />;
+          })}
+        </div>
+      )}
 
       {page < movies.total_pages && (
         <div className="text-center">
