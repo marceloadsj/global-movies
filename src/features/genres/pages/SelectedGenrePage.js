@@ -1,11 +1,10 @@
-import React, { useMemo, useEffect } from "react";
+import React, { useMemo } from "react";
 import { useRouteMatch } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 
 import GenresNav from "features/genres/organisms/GenresNav";
 import MovieSectionTemplate from "features/home/templates/MovieSectionTemplate";
 import MoviesList from "features/home/organisms/MoviesList";
-import getGenres from "../actions/getGenres";
+import useGetGenres from "../hooks/useGetGenres";
 
 export default function SelectedGenrePage() {
   const {
@@ -13,13 +12,7 @@ export default function SelectedGenrePage() {
   } = useRouteMatch();
 
   // load the genres if we don't have it
-  const genres = useSelector((state) => state.genres);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (!genres) dispatch(getGenres());
-  }, [dispatch, genres]);
+  const genres = useGetGenres();
 
   // find the selected genre in our list
   const genre = useMemo(() => {
@@ -33,7 +26,7 @@ export default function SelectedGenrePage() {
       <GenresNav />
 
       <MoviesList
-        fetchUrl={`/3/discover/movie?include_adult=false&with_genres=${genreId}`}
+        fetchUrl={`/3/discover/movie?include_adult=false&sort_by=popularity.desc&with_genres=${genreId}`}
         title={genre?.name}
       />
     </MovieSectionTemplate>
