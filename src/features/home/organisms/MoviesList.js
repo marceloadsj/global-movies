@@ -4,34 +4,44 @@ import fetchDb from "utilities/fetchDb";
 import Icon from "components/Icon";
 import Button from "components/Button";
 import useBreakpoints from "hooks/useBreakpoints";
-import TrendingMoviesPoster from "../molecules/TrendingMoviesPoster";
+import MoviePoster from "../molecules/MoviePoster";
 
-export default function TrendingMovies() {
+export default function MoviesList({ fetchUrl, title, icon }) {
   // we control the infinite pagination and movies list
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState({ state: "loading" });
 
+  // if the fetch url changes, we reset the state
+  useEffect(() => {
+    setPage(1);
+    setMovies({ state: "loading" });
+  }, [fetchUrl]);
+
+  // we load the movies to show on screen, pagination based
   useEffect(() => {
     async function run() {
-      // TODO: add try catch here
-      const response = await fetchDb.get("/3/trending/movie/week", {
-        params: { page },
-      });
+      try {
+        const response = await fetchDb.get(fetchUrl, {
+          params: { page },
+        });
 
-      setMovies((movies) => {
-        const results = movies.results || [];
+        setMovies((movies) => {
+          const results = movies.results || [];
 
-        return {
-          ...movies,
-          ...response.data,
-          state: "success",
-          results: [...results, ...response.data.results],
-        };
-      });
+          return {
+            ...movies,
+            ...response.data,
+            state: "success",
+            results: [...results, ...response.data.results],
+          };
+        });
+      } catch (error) {
+        // TODO: I should send the error to an error tracker tool
+      }
     }
 
     run();
-  }, [page]);
+  }, [page, fetchUrl]);
 
   // we get the right number of columns per breakpoint
   const { xl, md, sm } = useBreakpoints();
@@ -51,21 +61,21 @@ export default function TrendingMovies() {
   if (movies.state === "loading" || movies.state === "error") return null;
 
   return (
-    <div className="lg:ml-5 mt-5 md:mt-10 lg:mt-16 pb-10 flex-1">
+    <div className="lg:ml-5 mt-5 flex-1">
       <h3 className="flex items-center text-xl text-white">
-        <Icon name="trending-up" className="mr-3" /> Trending Movies
+        {icon && <Icon name={icon} className="mr-3" />} {title}
       </h3>
 
       <div className="mt-5 lg:mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-5">
         {sliceMovies.map((movie) => {
-          return <TrendingMoviesPoster key={movie.id} movie={movie} />;
+          return <MoviePoster key={movie.id} movie={movie} />;
         })}
       </div>
 
       {page < movies.total_pages && (
         <div className="text-center">
           <Button
-            className="mt-10 w-full sm:w-auto"
+            className="mt-5 md:mt-10 w-full sm:w-auto"
             icon="plus-circle"
             onClick={() => setPage((page) => page + 1)}
           >
