@@ -7,15 +7,33 @@ import Icon from "./Icon";
 export default function Button({
   className,
   isLink,
+  isExternal,
   icon,
   children,
   variant = "primary",
+  to,
   ...props
 }) {
-  const Is = isLink ? Link : "button";
+  let Is = isLink ? Link : "button";
+
+  let target;
+  let rel;
+  let href;
+
+  if (isExternal) {
+    Is = "a";
+    target = "_blank";
+    rel = "noopener noreferrer";
+    href = to;
+    to = undefined;
+  }
 
   return (
     <Is
+      target={target}
+      rel={rel}
+      href={href}
+      to={to}
       {...props}
       className={classnames(
         `
