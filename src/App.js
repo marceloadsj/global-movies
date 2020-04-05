@@ -8,6 +8,7 @@ import AppError from "features/app/organisms/AppError";
 import TheHeader from "features/app/organisms/TheHeader";
 import TheFooter from "features/app/organisms/TheFooter";
 import HomePage from "features/home/pages/HomePage";
+import GenresPage from "features/genres/pages/GenresPage";
 
 export default function App() {
   // dispatch to get the configurations object, as it's needed all over the system
@@ -39,6 +40,10 @@ export default function App() {
             <Switch>
               <Route path="/" exact>
                 <HomePage />
+              </Route>
+
+              <Route path="/genres" exact>
+                <GenresPage />
               </Route>
             </Switch>
           </>
