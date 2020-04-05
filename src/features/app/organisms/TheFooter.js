@@ -24,7 +24,7 @@ export default function TheFooter() {
         <div className="text-white mt-2">
           Powered by{" "}
           <a
-            href="https://www.themoviedb.org/"
+            href={process.env.REACT_APP_THE_MOVIE_DB_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-orange-500"
