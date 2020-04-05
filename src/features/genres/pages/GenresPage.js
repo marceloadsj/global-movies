@@ -5,8 +5,8 @@ import Icon from "components/Icon";
 import Card from "components/Card";
 import Button from "components/Button";
 import Divider from "components/Divider";
-import getGenres from "../actions/getGenres";
 import { ReactComponent as TmdbLogo } from "images/tmdb-logo.svg";
+import getGenres from "../actions/getGenres";
 
 export default function GenresPage() {
   // load all genres to create the left nav bar
