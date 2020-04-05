@@ -1,19 +1,24 @@
 import React from "react";
 
+import GenresNav from "features/genres/organisms/GenresNav";
 import FeaturedMovie from "../organisms/FeaturedMovie";
-import GenresNav from "../organisms/GenresNav";
-import TrendingMovies from "../organisms/TrendingMovies";
+import MoviesList from "../organisms/MoviesList";
+import MovieSectionTemplate from "../templates/MovieSectionTemplate";
 
 export default function HomePage() {
   return (
     <>
       <FeaturedMovie />
 
-      <section className="px-5 lg:px-10 flex flex-col lg:flex-row">
+      <MovieSectionTemplate>
         <GenresNav />
 
-        <TrendingMovies />
-      </section>
+        <MoviesList
+          fetchUrl="/3/trending/movie/week"
+          title="Trending Movies"
+          icon="trending-up"
+        />
+      </MovieSectionTemplate>
     </>
   );
 }
