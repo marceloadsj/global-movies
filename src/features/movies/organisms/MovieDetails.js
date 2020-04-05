@@ -153,7 +153,7 @@ export default function MovieDetails({ movieId, isFeatured }) {
       <img
         src={movieBackdrop}
         alt=""
-        className="absolute top-0 opacity-25 mask-image-top-sm-bottom-lg mt-10"
+        className="absolute top-0 opacity-25 mask-image-top-sm-bottom-lg mt-10 w-full"
       />
 
       <div className="z-10 relative px-5 xl:px-16 pt-5 lg:pt-10 pb-10">
