@@ -1,22 +1,15 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 
 import Icon from "components/Icon";
 import Card from "components/Card";
 import Button from "components/Button";
 import Divider from "components/Divider";
 import { ReactComponent as TmdbLogo } from "images/tmdb-logo.svg";
-import getGenres from "../actions/getGenres";
+import useGetGenres from "../hooks/useGetGenres";
 
 export default function GenresPage() {
   // load all genres to create the left nav bar
-  const genres = useSelector((state) => state.genres);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (!genres) dispatch(getGenres());
-  }, [dispatch, genres]);
+  const genres = useGetGenres();
 
   if (!genres || genres?.state === "loading" || genres?.state === "error") {
     return null;

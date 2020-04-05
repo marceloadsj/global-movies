@@ -1,22 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 
 import Card from "components/Card";
 import Icon from "components/Icon";
 import useBreakpoints from "hooks/useBreakpoints";
 import GenresNavLink from "../molecules/GenresNavLink";
-import getGenres from "../actions/getGenres";
+import useGetGenres from "../hooks/useGetGenres";
 
 export default function GenresNav() {
   // load all genres to create the left nav bar
-  const genres = useSelector((state) => state.genres);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (!genres) dispatch(getGenres());
-  }, [dispatch, genres]);
+  const genres = useGetGenres();
 
   // we render a select tag on mobile
   const { lg } = useBreakpoints();
