@@ -10,6 +10,7 @@ import TheFooter from "features/app/organisms/TheFooter";
 import HomePage from "features/home/pages/HomePage";
 import GenresPage from "features/genres/pages/GenresPage";
 import SelectedGenrePage from "features/genres/pages/SelectedGenrePage";
+import SelectedMoviePage from "features/movies/pages/SelectedMoviePage";
 
 export default function App() {
   // dispatch to get the configurations object, as it's needed all over the system
@@ -49,6 +50,10 @@ export default function App() {
 
               <Route path="/genre/:genreId" exact>
                 <SelectedGenrePage />
+              </Route>
+
+              <Route path="/movie/:movieId" exact>
+                <SelectedMoviePage />
               </Route>
             </Switch>
           </>

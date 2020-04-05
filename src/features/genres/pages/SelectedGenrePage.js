@@ -3,7 +3,7 @@ import { useRouteMatch } from "react-router-dom";
 
 import GenresNav from "features/genres/organisms/GenresNav";
 import MovieSectionTemplate from "features/home/templates/MovieSectionTemplate";
-import MoviesList from "features/home/organisms/MoviesList";
+import MoviesList from "features/movies/organisms/MoviesList";
 import useGetGenres from "../hooks/useGetGenres";
 
 export default function SelectedGenrePage() {

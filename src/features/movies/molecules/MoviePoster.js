@@ -25,14 +25,14 @@ export default function MoviePoster({ movie }) {
   return (
     <Link
       to={`/movie/${movie.id}`}
-      className="bg-black group rounded overflow-hidden flex flex-col justify-between"
+      className="bg-black group rounded overflow-hidden flex flex-col justify-between max-w-xs"
     >
       {movieBackdrop && (
         <img
           src={movieBackdrop}
           title={movie.original_title}
           alt={movie.original_title}
-          className="group-hover:scale-105 transform transition duration-150 shadow cursor-pointer mask-image-bottom-sm"
+          className="group-hover:scale-105 transform transition duration-150 shadow cursor-pointer mask-image-bottom-sm w-full"
         />
       )}
 
