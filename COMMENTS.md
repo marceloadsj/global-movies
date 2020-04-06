@@ -58,3 +58,12 @@ I'm caching the configuration on client side, using local storage, so we don't n
 ## Design
 
 I followed a dark mode design to keep the application with a better looking, more related to a cinema style.
+
+---
+
+## Versioning
+
+I worked using the feature branch pattern, always trying to have separation on different types of branches and commits, using features, improvements, fixes and chores to organize better each commit and branch.
+
+All my pull requests can be found here:
+[Feature Branch](https://github.com/marceloadsj/global-movies/pulls?q=is%3Apr+is%3Aclosed)
