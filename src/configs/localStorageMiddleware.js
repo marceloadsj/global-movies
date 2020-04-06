@@ -12,7 +12,10 @@ export default () => (next) => (action) => {
         JSON.stringify(state)
       );
     } catch (error) {
-      // TODO: I should send the error to an error tracker tool
+      window.ga("send", "exception", {
+        exDescription: error?.message || "localStorageMiddleware unknown error",
+        exFatal: false,
+      });
     }
   }
 

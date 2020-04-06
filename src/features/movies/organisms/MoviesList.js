@@ -37,7 +37,10 @@ export default function MoviesList({ fetchUrl, title, icon }) {
           };
         });
       } catch (error) {
-        // TODO: I should send the error to an error tracker tool
+        window.ga("send", "exception", {
+          exDescription: error?.message || "MoviesList unknown error",
+          exFatal: false,
+        });
       }
     }
 
