@@ -7,11 +7,14 @@ export default () => {
     dispatch({ type: GET_GENRES, payload: { state: "loading" } });
 
     let payload;
+    let configs;
 
     try {
       const response = await fetchDb.get("/3/genre/movie/list");
 
       payload = { state: "success", data: response.data.genres };
+
+      configs = { saveToLocalStorage: "genres" };
     } catch (exception) {
       payload = {
         state: "error",
@@ -19,7 +22,7 @@ export default () => {
       };
     }
 
-    dispatch({ type: GET_GENRES, payload, saveToLocalStorage: "genres" });
+    dispatch({ type: GET_GENRES, payload, ...configs });
   };
 };
 

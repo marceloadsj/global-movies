@@ -21,9 +21,11 @@ export default function MovieDetails({ movieId, isFeatured }) {
         const response = await fetchDb.get(`/3/movie/${movieId}`);
 
         setMovie({ state: "success", ...response.data });
-      } catch (exception) {
-        // TODO: I should send the error to an error tracker tool
-        setMovie({ state: "error" });
+      } catch (error) {
+        window.ga("send", "exception", {
+          exDescription: error?.message || "MovieDetails unknown error",
+          exFatal: false,
+        });
       }
     }
 

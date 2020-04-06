@@ -7,11 +7,14 @@ export default () => {
     dispatch({ type: GET_CONFIGURATION, payload: { state: "loading" } });
 
     let payload;
+    let configs;
 
     try {
       const response = await fetchDb.get("/3/configuration");
 
       payload = { state: "success", ...response.data };
+
+      configs = { saveToLocalStorage: "configuration" };
     } catch (exception) {
       payload = {
         state: "error",
@@ -25,7 +28,7 @@ export default () => {
     dispatch({
       type: GET_CONFIGURATION,
       payload,
-      saveToLocalStorage: "configuration",
+      ...configs,
     });
   };
 };

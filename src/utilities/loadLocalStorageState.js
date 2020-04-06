@@ -4,6 +4,9 @@ export default () => {
 
     if (state) return JSON.parse(state);
   } catch (error) {
-    // TODO: I should send the error to an error tracker tool
+    window.ga("send", "exception", {
+      exDescription: error?.message || "loadLocalStorageState unknown error",
+      exFatal: false,
+    });
   }
 };
