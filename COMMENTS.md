@@ -21,11 +21,11 @@
 
 ## Patterns
 
-Code Style:
+### Code Style:
 
 - [prettier](https://prettier.io/): used to format the entire codebase
 
-Folder Structure:
+### Folder Structure:
 
 I choose to go for a scalable structure based on Domain Driven Design. Each folder will be explained bellow:
 
@@ -44,8 +44,17 @@ I choose to go for a scalable structure based on Domain Driven Design. Each fold
 
 [Atomic Design](https://atomicdesign.bradfrost.com/): a structure to follow while developing components, separating each on it's own layer
 
-Redux Structure:
+### Redux Structure:
 
 - router: attached react router values to redux store
 - configuration: the main config object form the movie database website
-- genres: a list of movie genres tmdb provide us
+- genres: a list of movie genres tmdb provides us
+
+I ended moving only the strict necessary data to redux, so I could share between multiple components and reuse it.
+I'm caching the configuration on client side, using local storage, so we don't need to call that endpoint multiple times.
+
+---
+
+## Design
+
+I followed a dark mode design to keep the application with a better looking, more related to a cinema style.

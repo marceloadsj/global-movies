@@ -1,8 +1,10 @@
 # More details on [COMMENTS.md](https://github.com/marceloadsj/global-movies/blob/master/COMMENTS.md)
 
+I added on comments file some details about the choices and structure of that application, so we can have a clear overview of how it works and why.
+
 ---
 
-# Default CRA Readme
+## Default CRA Readme
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
