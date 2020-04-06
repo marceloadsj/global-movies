@@ -19,7 +19,7 @@ export default () => {
       };
     }
 
-    dispatch({ type: GET_GENRES, payload });
+    dispatch({ type: GET_GENRES, payload, saveToLocalStorage: "genres" });
   };
 };
 
