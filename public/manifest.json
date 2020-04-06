@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Global Movies",
+  "name": "Where you can find a huge library of movies around the globe",
   "icons": [
     {
       "src": "favicon.ico",
