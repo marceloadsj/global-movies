@@ -9,7 +9,9 @@ import Divider from "components/Divider";
 import Button from "components/Button";
 import Card from "components/Card";
 import VoteTag from "features/movies/atoms/VoteTag";
+import AppError from "features/app/organisms/AppError";
 import MoviePoster from "../molecules/MoviePoster";
+import MovieDetailsSkeleton from "../molecules/MovieDetailsSkeleton";
 
 export default function MovieDetails({ movieId, isFeatured }) {
   // load the featured movie from the json endpoint
@@ -54,8 +56,16 @@ export default function MovieDetails({ movieId, isFeatured }) {
   // mount movie url link
   const movieUrl = `/movie/${movie.id}`;
 
-  // if we could load the featured, we simply doesnt show it
-  if (movie.state === "loading" || movie.state === "error") return null;
+  // if we could not load the movie, if it's feature we hide, otherwise we show an error message
+  if (movie.state === "error") {
+    if (isFeatured) return null;
+
+    return (
+      <AppError>An unknown error ocurred, try again in a few minutes</AppError>
+    );
+  }
+
+  if (movie.state === "loading") return <MovieDetailsSkeleton />;
 
   const content = (
     <>
@@ -153,7 +163,7 @@ export default function MovieDetails({ movieId, isFeatured }) {
   );
 
   return (
-    <>
+    <section>
       {movieBackdrop && (
         <img
           src={movieBackdrop}
@@ -173,6 +183,6 @@ export default function MovieDetails({ movieId, isFeatured }) {
           </div>
         )}
       </div>
-    </>
+    </section>
   );
 }

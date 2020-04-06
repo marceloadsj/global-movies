@@ -3,8 +3,10 @@ import { useHistory } from "react-router-dom";
 
 import Card from "components/Card";
 import Icon from "components/Icon";
+import Skeleton from "components/Skeleton";
 import useBreakpoints from "hooks/useBreakpoints";
 import GenresNavLink from "../molecules/GenresNavLink";
+import GenresNavSkeleton from "../molecules/GenresNavSkeleton";
 import useGetGenres from "../hooks/useGetGenres";
 
 export default function GenresNav() {
@@ -17,11 +19,13 @@ export default function GenresNav() {
   const history = useHistory();
 
   // we doesn't show the bar if don't have the genres
-  if (!genres || genres?.state === "loading" || genres?.state === "error") {
-    return null;
-  }
+  if (genres && genres?.state === "error") return null;
+
+  const loading = !genres || genres.state === "loading";
 
   if (!lg) {
+    if (loading) return <Skeleton className="w-full h-10" />;
+
     return (
       <div className="w-full">
         <select
@@ -49,13 +53,19 @@ export default function GenresNav() {
   return (
     <div className="-mb-32 -mt-10 py-10 pr-5 sticky top-0 max-h-screen-96px overflow-y-scroll w-64 xl:w-full xl:max-w-xs">
       <Card>
-        <h5 className="text-gray-300 text-xl mb-5 flex items-center">
-          <Icon name="grid" className="mr-3" /> Genres
-        </h5>
+        {loading && <GenresNavSkeleton />}
 
-        {genres.data.map((genre) => (
-          <GenresNavLink key={genre.id} genre={genre} />
-        ))}
+        {genres?.state === "success" && (
+          <>
+            <h5 className="text-gray-300 text-xl mb-5 flex items-center">
+              <Icon name="grid" className="mr-3" /> Genres
+            </h5>
+
+            {genres.data.map((genre) => (
+              <GenresNavLink key={genre.id} genre={genre} />
+            ))}
+          </>
+        )}
       </Card>
     </div>
   );

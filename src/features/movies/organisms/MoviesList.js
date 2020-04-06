@@ -5,7 +5,9 @@ import Icon from "components/Icon";
 import Card from "components/Card";
 import Button from "components/Button";
 import useBreakpoints from "hooks/useBreakpoints";
+import AppError from "features/app/organisms/AppError";
 import MoviePoster from "../molecules/MoviePoster";
+import MoviesListSkeleton from "../molecules/MoviesListSkeleton";
 
 export default function MoviesList({ fetchUrl, title, icon }) {
   // we control the infinite pagination and movies list
@@ -62,7 +64,14 @@ export default function MoviesList({ fetchUrl, title, icon }) {
     }
   }, [results, total_results, cols]);
 
-  if (movies.state === "loading" || movies.state === "error") return null;
+  // show an error message if we do not load it
+  if (movies.state === "error") {
+    return (
+      <AppError>An unknown error ocurred, try again in a few minutes</AppError>
+    );
+  }
+
+  if (movies.state === "loading") return <MoviesListSkeleton />;
 
   const hasMovies = Boolean(sliceMovies?.length);
 
