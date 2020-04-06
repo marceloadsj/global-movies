@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import getConfiguration from "features/app/actions/getConfiguration";
@@ -16,7 +16,6 @@ import SearchPage from "features/search/pages/SearchPage";
 export default function App() {
   // dispatch to get the configurations object, as it's needed all over the system
   const dispatch = useDispatch();
-
   const configuration = useSelector((state) => state?.configuration);
 
   useEffect(() => {
@@ -24,6 +23,13 @@ export default function App() {
       dispatch(getConfiguration());
     }
   }, [configuration, dispatch]);
+
+  // scroll to top when pathname changes
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [pathname]);
 
   return (
     <>
@@ -60,6 +66,8 @@ export default function App() {
               <Route path="/search/:query?" exact>
                 <SearchPage />
               </Route>
+
+              <Redirect to="/" />
             </Switch>
           </>
         )}
