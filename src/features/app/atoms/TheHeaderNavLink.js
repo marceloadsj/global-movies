@@ -9,7 +9,7 @@ export default function TheHeaderNavLink({ to, children, icon }) {
 
   let selected = pathname === to;
 
-  if (to === "/") {
+  if (to !== "/") {
     selected = pathname.startsWith(to);
   }
 
