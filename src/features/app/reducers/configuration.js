@@ -1,14 +1,14 @@
 import createReducer from "utilities/createReducer";
 import {
   GET_CONFIGURATION,
-  getConfigurationReducer
+  getConfigurationReducer,
 } from "../actions/getConfiguration";
 
 const actions = [
   {
     type: GET_CONFIGURATION,
-    reducer: getConfigurationReducer
-  }
+    reducer: getConfigurationReducer,
+  },
 ];
 
 const initialState = null;
