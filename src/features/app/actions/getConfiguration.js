@@ -22,7 +22,11 @@ export default () => {
       };
     }
 
-    dispatch({ type: GET_CONFIGURATION, payload });
+    dispatch({
+      type: GET_CONFIGURATION,
+      payload,
+      saveToLocalStorage: "configuration",
+    });
   };
 };
 
