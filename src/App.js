@@ -34,9 +34,7 @@ export default function App() {
   return (
     <>
       <main className="flex-1 flex flex-col">
-        {(!configuration || configuration?.state === "loading") && (
-          <AppLoader />
-        )}
+        {(!configuration || configuration.state === "loading") && <AppLoader />}
 
         {configuration?.state === "error" && (
           <AppError>{configuration.message}</AppError>
